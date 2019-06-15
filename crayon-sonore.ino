@@ -1,10 +1,11 @@
-#define SERIAL_DEBUG
+// #define SERIAL_DEBUG
 
 const int capt = A0;
 const int piezo = 9;
 
 const int maxStylo = 1000;
-const int minStylo = 850;
+// adjust the minimum according to the values read in serial terminal
+const int minStylo = 700;
 
 const int ambitusStylo = maxStylo - minStylo;
 float stylo = 0;
