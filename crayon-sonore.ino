@@ -1,10 +1,13 @@
-// #define SERIAL_DEBUG
+#define SERIAL_DEBUG
 
 const int capt = A0;
 const int piezo = 9;
 
-float stylo = 0;
 const int maxStylo = 1000;
+const int minStylo = 850;
+
+const int ambitusStylo = maxStylo - minStylo;
+float stylo = 0;
 
 // MIDI notes (69 <=> 440 Hz)
 float ambitus = 66;
@@ -30,7 +33,9 @@ void loop() {
     // convertit l'entrée analog in en MIDI (normalisation puis conversion)
     
     // Normalisation et mise à l'échelle :
-    stylo = pow(stylo / (float) maxStylo, 1.f) * ambitus + offset;
+    // stylo = pow(stylo / (float) maxStylo, 1.f) * ambitus + offset;
+    stylo = stylo > minStylo ? stylo : minStylo;
+    stylo = pow((stylo - minStylo) / (float) ambitusStylo, 1.f) * ambitus + offset;
   
     // Conversion MIDI en frequence
     // stylo = (exp(0.057762265) * stylo * 69) / 440;
