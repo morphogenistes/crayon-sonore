@@ -11,3 +11,5 @@ Matériel requis :
 * une plaque de prototypage
 * du fil électronique
 * un câble croco
+
+![](crayon-sonore.png)
